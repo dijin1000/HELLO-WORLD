@@ -49,10 +49,10 @@ background-color:green;
 }
 
 #menuContainer {
-margin-left:91%;
 margin-top:5%;
 width:9%;
 height:70%;
+float: right;
 }
 
 #ToggleButton{
@@ -77,6 +77,10 @@ display:none;
 
 .banner{
 background-color:Blue;l
+}
+
+#Content {
+padding-top:4em;
 }
 
 
