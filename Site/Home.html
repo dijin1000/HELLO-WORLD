@@ -41,9 +41,9 @@
 				<div id="Content">
 				</div>
 				<script>
-				$.getJSON("https://www.reddit.com/r/Leiden/new.json", function(data) {
-					$.each(data.data.children, function(i, f) {
-						$("#Content").append('<a href="' + f.data.url + '">' + f.data.title + '</a><br>');
+				$.getJSON('items.json', function(data) {
+					$.each(data.items, function(i, f) {
+						$("#Content").append('<a href="' + f.url + '">' + f.title + '</a><br>');
 					})
 				})
 				</script>
