@@ -3,5 +3,5 @@
  //this makes the time in the past to destroy the cookie 
  setcookie('name', gone, $past); 
  setcookie('pass', gone, $past); 
- header("Location: login.php"); 
+ header("Location: Home.php"); 
  ?> 

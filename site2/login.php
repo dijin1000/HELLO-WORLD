@@ -61,35 +61,79 @@ while($info = mysql_fetch_array( $check )){
 else{
 // if they are not logged in 
 ?>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" type="text/css" href="CSS/Standard.css">
+		<title>
+		</title>
+		<script src="jquery-2.1.3.min.js"></script>
+		<script src="Javascript/Sidebar.js"></script>
+	</head>
+	  
+	<body>
+		<div id = "SiteContainer">
+			<div id = "BannerBackground">
+				<div id = "BannerLeft" class="banner">
+				</div>
+				<div id = "BannerCenter" class="banner">
+				</div>
+				<div id = "BannerRight" class="banner">
+				</div>
+				<div id = "Logo">
+				</div>
+			</div>
+		<div id="menuContainer">
+			<div id="ToggleButton" onclick="toggle_visibility('menu');"></div>
+				<div id="menu" >
+					<?php
+					//Connects to your Database 
+					mysql_connect("localhost", "root", "") or die(mysql_error()); 
+					mysql_select_db("login") or die(mysql_error()); 
+				
+					if(isset($_COOKIE['name'])){ //if there is, it logs you in and directes you to the members page
+						$username = $_COOKIE['name']; 
+						$pass = $_COOKIE['pass'];
+						$check = mysql_query("SELECT * FROM users WHERE username = '$username'")or die(mysql_error());
 
- <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post"> 
-
- <table border="0"> 
-
- <tr><td colspan=2><h1>Login</h1></td></tr> 
-
- <tr><td>Username:</td><td> 
-
- <input type="text" name="username" maxlength="40"> 
-
- </td></tr> 
-
- <tr><td>Password:</td><td> 
-
- <input type="password" name="pass" maxlength="50"> 
-
- </td></tr> 
-
- <tr><td colspan="2" align="right"> 
-
- <input type="submit" name="submit" value="Login"> 
-
- </td></tr> 
-
- </table> 
-
- </form> 
-
+						while($info = mysql_fetch_array( $check )){
+							if ($pass != $info['password']){}
+							else{
+								?> 
+								<button onclick="location.href = 'Upload.php'" class ="Links">Upload</button>
+								<button onclick="location.href = 'Logout.php'" class ="Links">Logout</button>
+								<?php
+							}
+						}
+					}
+					else{
+						?>
+						<button onclick="location.href = 'Home.php'" class ="Links">Home</button>
+						<button onclick="location.href = 'Register.php'" class ="Links">Register</button>
+						<?php
+					}
+					?>
+				</div>
+			</div>
+			<div id="Content">
+				<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post"> 
+					<table border="0"> 
+						<tr><td colspan=2><h1>Login</h1></td></tr> 
+						<tr><td>Username:</td><td> 
+						<input type="text" name="username" maxlength="40"> 
+						</td></tr> 
+						<tr><td>Password:</td><td> 
+						<input type="password" name="pass" maxlength="50"> 
+						</td></tr> 
+						<tr><td colspan="2" align="right"> 
+						<input type="submit" name="submit" value="Login"> 
+						</td></tr> 
+					</table> 
+				</form> 
+			</div>			
+		</div>
+	</body>
+</html>
  <?php 
  }
  ?> 

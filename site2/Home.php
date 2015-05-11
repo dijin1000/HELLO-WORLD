@@ -19,8 +19,6 @@
 						
 						<div id = "BannerRight" class="banner">
 						</div>
-			
-				
 						<div id = "Logo">
 						</div>
 				</div>
@@ -29,13 +27,37 @@
 					<div id="ToggleButton" onclick="toggle_visibility('menu');"></div>
 					 
 					<div id="menu" >
-						<ul>
-							<li><a href = "Upload.php" >Upload</a></li>
-						</ul>
+						<?php
+						//Connects to your Database 
+						mysql_connect("localhost", "root", "") or die(mysql_error()); 
+						mysql_select_db("login") or die(mysql_error()); 
+						
+						if(isset($_COOKIE['name'])){ //if there is, it logs you in and directes you to the members page
+							$username = $_COOKIE['name']; 
+							$pass = $_COOKIE['pass'];
+							$check = mysql_query("SELECT * FROM users WHERE username = '$username'")or die(mysql_error());
+
+							while($info = mysql_fetch_array( $check )){
+								if ($pass != $info['password']){}
+								else{
+									?> 
+									<button onclick="location.href = 'Upload.php'" class = "Links" >Upload</button>
+									<button onclick="location.href = 'Logout.php'" class = "Links">Logout</button>
+									<?php
+								}
+							}
+						 }
+						 else{
+							?>
+							<button onclick="location.href = 'login.php'" class = "Links" >Login</button>
+							<button onclick="location.href = 'Register.php'" class = "Links" >Register</button>
+							<?php
+						 }
+						 ?>
 					</div>
 				</div>
 				<div id="Content">
-				<img src="getpicture.php?fid=6">
+
 				</div>
 				<script>
 				$.getJSON('items.json', function(data) {

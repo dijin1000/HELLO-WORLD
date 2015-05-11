@@ -39,11 +39,16 @@ box-shadow: -10px 10px 5px  .5rem #888888;
 #Logo{
 position:relative;
 top:95%;
+text-align:text-top;
 margin-left:auto;
 margin-right:auto;
+
 width:35%;
 height:30%;
-background-color:green;
+background:url('../Images/Title.png');
+background-size: 300px 60px;
+background-repeat: no-repeat;
+background-position: center; 
 }
 
 #menuContainer {
@@ -64,18 +69,14 @@ background-repeat: no-repeat;
     
 #menu {
 float:right;
-width:280px;
-background-color:yellow;
+width:200px;
+background-color:#D8D8D8;
 display:none;
 
 }
 
 /* Fiddle with the menu items */
 #menu ul { list-style-type: none; }
-
-.banner{
-background-color:Blue;l
-}
 
 #Content {
 margin-top:4%;
@@ -84,6 +85,11 @@ margin-right:auto;
 width: 45%;
 padding-top:4em;
 }
+.banner{
+background-color:Blue;
+}
+
+
 
 .item {
 width: 100%;
@@ -102,6 +108,11 @@ float: left;
 height: 100%;
 }
 
+.Links{
+float:right;
+width:75%;
+height:70px;
+}
 .text{
 	width: 100%;
 }
