@@ -19,7 +19,9 @@ mysql_select_db("login") or die(mysql_error());
 		//otherwise they are shown the admin area
 		else{
 		?>
-			Upload your file to the database...
+			Upload an image: <br>
+			max size(600x500 px) <br>
+			format: PNG/JPG/GIF
 			<form action="upload.php" method="post" enctype="multipart/form-data" name="uploadform">
 			<input type="hidden" name="MAX_FILE_SIZE" value="350000">
 			<input name="picture" type="file" id="picture" size="50">
@@ -43,7 +45,7 @@ list($width, $height, $typeb, $attr) = getimagesize($tmp_name);
 if($width>600 || $height>500) 
 { 
 echo $name . "'s dimensions exceed the 600x500 pixel limit."; 
-?> <a href="form.html">Click here</a> to try again. <?php ; 
+?> <a href="upload.php">Click here</a> to try again. <?php ; 
 die(); 
 } 
 
@@ -54,14 +56,14 @@ $type=='image/png' ||
 $type=='image/gif' 
 )) { 
 echo $type .  " is not an acceptable format."; 
-?> <a href="form.html">Click here</a> to try again. <?php ; 
+?> <a href="upload.php">Click here</a> to try again. <?php ; 
 die(); 
 } 
 
 // if the file size is larger than 350 KB, kill it 
 if($size>'350000') { 
 echo $name . " is over 350KB. Please make it smaller."; 
-?> <a href="form.html">Click here</a> to try again. <?php ; 
+?> <a href="upload.php">Click here</a> to try again. <?php ; 
 die(); 
 }
 // if your server has magic quotes turned off, add slashes manually 
