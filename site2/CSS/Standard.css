@@ -1,0 +1,111 @@
+html,body{
+	height:100%;
+}
+
+#SiteContainer {
+height:1200px;
+width:1200px;
+margin-left:auto; 
+margin-right:auto;   
+}
+
+#BannerBackground {
+height:200px;
+width:100%;
+}
+
+#BannerCenter {
+position:relative;
+float:left;
+width:40%;
+height:80%;
+box-shadow: 0px 10px 5px -2px #888888; 
+}
+
+#BannerLeft{
+width:30%;
+height:100%;
+float:left;
+box-shadow: 10px 10px 5px  .5rem #888888;
+}
+
+#BannerRight{
+width:30%;
+height:100%;
+float:right;
+box-shadow: -10px 10px 5px  .5rem #888888;
+}
+
+#Logo{
+position:relative;
+top:95%;
+margin-left:auto;
+margin-right:auto;
+width:35%;
+height:30%;
+background-color:green;
+}
+
+#menuContainer {
+margin-top:5%;
+width:300px;
+height:70%;
+float: right;
+}
+
+#ToggleButton{
+float:right;
+height: 20px;
+width: 20px;
+background:url('../Images/show.png');
+background-size: 20px 20px;
+background-repeat: no-repeat;
+}
+    
+#menu {
+float:right;
+width:280px;
+background-color:yellow;
+display:none;
+
+}
+
+/* Fiddle with the menu items */
+#menu ul { list-style-type: none; }
+
+.banner{
+background-color:Blue;l
+}
+
+#Content {
+margin-top:4%;
+margin-left:auto;
+margin-right:auto;
+width: 45%;
+padding-top:4em;
+}
+
+.item {
+width: 100%;
+height: auto;
+overflow: auto;
+min-height: 100px;
+padding-left: 1em;
+padding-right: 1em;
+padding-top: 0.5em;
+padding-bottom: 0.4em;
+border: 5px solid blue;
+}
+
+.picture{
+float: left;
+height: 100%;
+}
+
+.text{
+	width: 100%;
+}
+
+
+
+
