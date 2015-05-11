@@ -7,7 +7,7 @@ mysql_select_db("login") or die(mysql_error());
 if (isset($_POST['submit'])) { 
 
 //This makes sure they did not leave any fields blank
-if (!$_POST['username'] | !$_POST['pass'] | !$_POST['pass2'] | !$_POST['email']) {
+if (!$_POST['username'] | !$_POST['pass'] | !$_POST['pass2'] ) {
 	die('You did not complete all of the required fields');
 }
 
@@ -40,35 +40,13 @@ if (!get_magic_quotes_gpc()) {
 }
 
 // now we insert it into the database
-$hash = md5( rand(0,1000) );
-$insert = "INSERT INTO users (username, password, email, active, hash) VALUES ('".$_POST['username']."', '".$_POST['pass']."', '".$_POST['email']."', '0', '$hash')";
+$insert = "INSERT INTO users (username, password) VALUES ('".$_POST['username']."', '".$_POST['pass']."')";
 $add_member = mysql_query($insert);
-
-$to      = $_POST['email']; // Send email to our user
-$subject = 'Signup | Verification'; // Give the email a subject 
-$message = '
- 
-Thanks for signing up!
-Your account has been created, you can login with the following credentials after you have activated your account by pressing the url below.
- 
-------------------------
-Username: '.$_POST['username'].'
-Password: '.$_POST['pass'].'
-------------------------
- 
-Please click this link to activate your account:
-http://localhost/Login/verify.php?email='.$_POST['username'].'&hash='.$hash.'
- 
-'; // Our message above including the link
-                     
-$headers = 'From:noreply@localhost.com' . "\r\n"; // Set from headers
-mail($to, $subject, $message, $headers); // Send our email
 ?>
-
 
  <h1>Registered</h1>
 
- <p>Thank you, you have registered - you can <a href="login.php">login</a> after activating your account by verifying your email.</p>
+ <p>Thank you, you have registered - you may now <a href="login.php">login</a>.</p>
 
  <?php 
  }
@@ -86,12 +64,6 @@ mail($to, $subject, $message, $headers); // Send our email
  <input type="text" name="username" maxlength="60">
 
  </td></tr>
- 
- <tr><td>Email:</td><td>
-
- <input type="text" name="email" maxlength="60">
-
- </td></tr>
 
  <tr><td>Password:</td><td>
 
@@ -103,13 +75,13 @@ mail($to, $subject, $message, $headers); // Send our email
 
  <input type="password" name="pass2" maxlength="10">
 
- 
+ </td></tr>
+
  <tr><th colspan=2><input type="submit" name="submit" 
 value="Register"></th></tr> </table>
 
  </form>
 
- By registering an account, you automatically agree to our <a href="free-website-terms-and-conditions.pdf">terms and conditions</a>
  <?php
  }
  ?> 
